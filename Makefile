@@ -6,7 +6,7 @@
 #    By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 12:30:05 by hdelaby           #+#    #+#              #
-#    Updated: 2016/11/09 10:28:42 by hdelaby          ###   ########.fr        #
+#    Updated: 2016/11/09 13:18:16 by hdelaby          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 LIBNAME = lib;
 LIBPATH = -C ./libft/
 
-SRCS = main.c init.c get_input.c check_input.c
+SRCS = main.c init.c get_input.c check_input.c check_tetriminos.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

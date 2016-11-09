@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/09 11:20:28 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/09 12:54:41 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		syntax_check(char *str_data)
 	}
 	return (0);
 }
-		
 
 char	*check_input(char *str_data)
 {
