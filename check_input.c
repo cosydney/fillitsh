@@ -6,12 +6,13 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/09 16:54:20 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/09 20:26:52 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
+#include <stdio.h>
 
 int		chars_check(char str)
 {
@@ -21,17 +22,20 @@ int		chars_check(char str)
 		return (0);
 }
 
-int		check(char *str)
-{
-	int line;
-	int height;
+/*	check format verifie 1. nbre de lignes
+**  2. la hauteur 3.Les caracteres . # et les '\n'
+**  4. qu'il y a bien 4 #.
+*/
 
-	height = 0;
-	line = 0;
+int		check_format(char *str, int height, int line, int dash)
+{
 	while (*str)
 	{
+		ft_putchar(*str);
 		if (chars_check(*str))
 			return (1);
+		if (*str == '#')
+			dash++;
 		if (*str == '\n')
 		{
 			if (line != 4)
@@ -41,7 +45,7 @@ int		check(char *str)
 		}
 		if (*str == '\n' && *(str + 1) == '\n')
 		{
-			if (height % 4 != 0)
+			if (height % 4 != 0 || dash % 4 != 0 || *(str + 2) == '\0')
 				return (1);
 			str++;
 		}
@@ -53,7 +57,7 @@ int		check(char *str)
 
 char	*check_input(char *str_data)
 {
-	if (check(str_data))
+	if (check_format(str_data, 0, 0, 0))
 		return (NULL);
 	return (str_data);
 }
