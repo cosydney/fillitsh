@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 13:46:34 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 13:48:30 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		check_format(char *str, int height, int line, int dash)
 			dash++;
 		if (*str == '\n' && ((*(str + 1) == '\n') || (*(str + 1) == '\0')))
 		{
-			if (height % 4 != 0 || dash != 4) //|| *(str + 2) == '\0')
+			if (height % 4 != 0 || dash != 4)
 				return (1);
 			dash = 0;
 			str++;
