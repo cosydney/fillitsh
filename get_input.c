@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:04:26 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/09 09:54:51 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 10:26:55 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,9 @@ char	*open_close_file(char *path)
 	char	*file_data;
 
 	if ((fd = open(path, O_RDONLY)) == -1)
-	{
-		ft_putendl_fd("Cannot open input file.", 2);
 		return (NULL);
-	}
 	file_data = file_to_str(fd);
 	if (close(fd) == -1)
-	{
-		ft_putendl_fd("Cannot close input file.", 2);
 		return (NULL);
-	}
 	return (file_data);
 }

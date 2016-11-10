@@ -6,7 +6,7 @@
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 13:49:00 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/09 13:27:39 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 10:22:16 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 
 int		main(int ac, char **av)
 {
-	if (launch_fillit(ac, av))
+	if (ac != 2)
 	{
-		ft_putendl("Error.");
+		ft_putendl_fd("usage: fillit tetriminos_file", 2);
 		return (1);
 	}
-	return(0);
+	if (launch_fillit(av))
+	{
+		ft_putendl("Error.");
+		return (2);
+	}
+	return (0);
 }
