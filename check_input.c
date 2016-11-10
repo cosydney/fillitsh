@@ -6,41 +6,58 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/09 12:54:41 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 08:55:43 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
+#include <stdio.h>
 
-int		syntax_check(char *str_data)
+int		chars_check(char str)
 {
-	int		char_lines;
-	int		nb_rows;
+	if (str != '.' && str != '#' && str != '\n')
+		return (1);
+	else
+		return (0);
+}
 
-	char_lines = 0;
-	nb_rows = 0;
-	while (*str_data)
+/*	check format verifie 1. nbre de lignes
+**  2. la hauteur 3.Les caracteres . # et les '\n'
+**  4. qu'il y a bien 4 #.
+*/
+
+int		check_format(char *str, int height, int line, int dash)
+{
+	while (*str)
 	{
-		ft_putchar(*str_data);
-		if ((*str_data != '.' && *str_data != '#' && *str_data != '\n') || char_lines > 4)
+		ft_putchar(*str);
+		if (chars_check(*str))
 			return (1);
-		if (*str_data == '\n')
+		if (*str == '#')
+			dash++;
+		if (*str == '\n')
 		{
-			if (char_lines != 4)
+			if (line != 4)
 				return (1);
-			char_lines = -1;
-			nb_rows++;
+			line = -1;
+			height++;
 		}
-		char_lines++;
-		str_data++;
+		if (*str == '\n' && *(str + 1) == '\n')
+		{
+			if (height % 4 != 0 || dash % 4 != 0 || *(str + 2) == '\0')
+				return (1);
+			str++;
+		}
+		line++;
+		str++;
 	}
-	return (0);
+	return ((height % 4 == 0) ? 0 : 1);
 }
 
 char	*check_input(char *str_data)
 {
-	if (syntax_check(str_data))
+	if (check_format(str_data, 0, 0, 0))
 		return (NULL);
 	return (str_data);
 }
