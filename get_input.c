@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:04:26 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 10:26:55 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 14:20:13 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 /*
 ** Takes data input from a lista and converts it to a string
 ** Returns the new str or NULL on failure
+*/
+
+/*
+** Add verification if there is less than 24 characters
+** 
 */
 
 char	*lst_to_str(t_list *lst, size_t file_size)
