@@ -6,7 +6,7 @@
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 12:24:48 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 10:21:38 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 13:23:53 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,7 @@ char	*open_close_file(char *path);
 char	*check_input(char *str_data);
 
 char	**check_tetriminos(char *str_data);
+
+char	*remove_edges(char **indiv_tetri);
+
 #endif
