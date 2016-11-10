@@ -6,14 +6,18 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:13:42 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 11:30:48 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 11:42:11 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-char	**check_col(char **indiv_tetri, int col)
+
+// THIS FILE NEEDS TO BE SPLIT IN DIFFERENT FILES FOR CLARITY
+
+
+void	trim_col(char **indiv_tetri, int col)
 {
 	int		i;
 
@@ -26,7 +30,7 @@ char	**check_col(char **indiv_tetri, int col)
 	return (indiv_tetri);
 }
 
-char	*check_row(char *tetri_row)
+void	trim_row(char *tetri_row)
 {
 	int 	i;
 
