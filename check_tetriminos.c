@@ -6,18 +6,51 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:13:42 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 08:27:45 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 11:30:48 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
+char	**check_col(char **indiv_tetri, int col)
+{
+	int		i;
+
+	i = 0;
+	while (i < 4)
+		if (indiv_tetri[i++][col] == '#')
+			return (NULL);
+	while (i < 8)
+		indiv_tetri[i++ % 4][col] = '-';
+	return (indiv_tetri);
+}
+
+char	*check_row(char *tetri_row)
+{
+	int 	i;
+
+	i = 0;
+	while (i < 5)
+		if (tetri_row[i++] == '#')
+			return (NULL);
+	while (i < 10)
+		tetri_row[i++ % 5] = '-';
+	return (tetri_row);
+}
+
 char	*remove_edges(char **indiv_tetri)
 {
-	while (*indiv_tetri)
-		ft_putstr(*(indiv_tetri++));
-	return (ft_strdup("coucou"));
+	int		i;
+
+	i = 0;
+	while (i < 4)
+		check_row(indiv_tetri[i++]);
+	while (i < 8)
+		check_col(indiv_tetri, (i++ % 4));
+	while (i < 12)
+		ft_putstr(indiv_tetri[i++ % 4]);
+	return (*indiv_tetri);
 }
 
 char	**split_tetri(char *str_data)
