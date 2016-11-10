@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 13:48:30 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 13:49:53 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ int		chars_check(char str)
 		return (0);
 }
 
-/*	
+/*
 **	Verifies the overall format of the file data. That includes height, nb
 **	of char per line, number of # and presence of only '.' '.\n' and '#'
 **  Returns 0 if the file is correct, 1 otherwise.
 */
-
-#include <stdio.h>
 
 int		check_format(char *str, int height, int line, int dash)
 {
