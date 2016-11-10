@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:04:26 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 09:48:07 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 10:26:55 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,10 @@ char	*open_close_file(char *path)
 	int		fd;
 	char	*file_data;
 
-	// ONLY RETURN "NULL" CAUSE WE NEED TO RETURN ERROR IN EVERY ERROR CASE
 	if ((fd = open(path, O_RDONLY)) == -1)
-	{
-		ft_putendl_fd("Cannot open input file.", 2);
 		return (NULL);
-	}
 	file_data = file_to_str(fd);
 	if (close(fd) == -1)
-	{
-		ft_putendl_fd("Cannot close input file.", 2);
 		return (NULL);
-	}
 	return (file_data);
 }
