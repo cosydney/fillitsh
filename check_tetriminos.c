@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:13:42 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 12:20:37 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 13:07:50 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,26 @@
 char	*copy_trim(char **indiv_tetri)
 {
 	char	*trim_cpy;
-	int i;
-	int j;
+	int		i;
+	int		j;
+	int		k;
 
 	i = 0;
-	j = 0;
+	k = 0;
 	if ((trim_cpy = (char *)malloc(sizeof(char) * 9)) == NULL)
 		return (NULL);
 	while (indiv_tetri[i])
 	{
+		j = 0;
 		while (indiv_tetri[i][j])
 		{
 			if (indiv_tetri[i][j] != '-')
-			{
-				*trim_cpy = indiv_tetri[i][j];
-				trim_cpy += 1;	
-			}
+				trim_cpy[k++] = indiv_tetri[i][j];	
 			j++;
 		}
 		i++;
 	}
-	*trim_cpy = '\0';
+	trim_cpy[k] = '\0';
 	ft_putstr(trim_cpy);
 	return (trim_cpy);
 }
@@ -79,8 +78,6 @@ char	*remove_edges(char **indiv_tetri)
 		trim_row(indiv_tetri[i++]);
 	while (i < 8)
 		trim_col(indiv_tetri, (i++ % 4));
-	while (i < 12)
-		ft_putstr(indiv_tetri[i++ % 4]);
 	trim_cpy = copy_trim(indiv_tetri);
 	return (trim_cpy);
 }
