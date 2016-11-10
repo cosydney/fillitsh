@@ -6,7 +6,7 @@
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 12:24:48 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/09 13:48:18 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 08:55:23 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,6 @@ int		launch_fillit(int ac, char **av);
 char	*open_close_file(char *path);
 
 char	*check_input(char *str_data);
+
+char	**check_tetriminos(char *str_data);
 #endif
