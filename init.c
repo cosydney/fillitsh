@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 17:45:00 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 12:20:45 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 16:58:07 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 ** Receives the path from main and initialises the program
 ** Returns 1 on failure and 0 on success
 */
+#include <stdio.h>
 
 int		launch_fillit(char **av)
 {
@@ -32,5 +33,7 @@ int		launch_fillit(char **av)
 	if (!str_data)
 		return (1);
 	table_tetri = check_tetriminos(str_data);
+	if (compare_tetris(table_tetri))
+		return(1);
 	return (0);
 }
