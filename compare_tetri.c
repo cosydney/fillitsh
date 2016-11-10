@@ -6,12 +6,13 @@
 /*   By: sycohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 16:49:25 by sycohen           #+#    #+#             */
-/*   Updated: 2016/11/10 19:07:36 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 19:10:37 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
+
 int		compare_tetris(char **tetris)
 {
 	int		i;
