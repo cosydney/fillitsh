@@ -6,13 +6,17 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 08:55:43 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 09:36:47 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
-#include <stdio.h>
+
+/*
+**	Simple function to check whether a character is a valid one
+**	Returns 0 if the char is correct, 1 otherwise
+*/
 
 int		chars_check(char str)
 {
@@ -22,16 +26,16 @@ int		chars_check(char str)
 		return (0);
 }
 
-/*	check format verifie 1. nbre de lignes
-**  2. la hauteur 3.Les caracteres . # et les '\n'
-**  4. qu'il y a bien 4 #.
+/*	
+**	Verifies the overall format of the file data. That includes height, nb
+**	of char per line, number of # and presence of only '.' '.\n' and '#'
+**  Returns 0 if the file is correct, 1 otherwise.
 */
 
 int		check_format(char *str, int height, int line, int dash)
 {
 	while (*str)
 	{
-		ft_putchar(*str);
 		if (chars_check(*str))
 			return (1);
 		if (*str == '#')
