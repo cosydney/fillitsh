@@ -6,11 +6,10 @@
 /*   By: sycohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 22:05:27 by sycohen           #+#    #+#             */
-/*   Updated: 2016/11/09 23:25:05 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 08:17:55 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -64,6 +63,8 @@ char	**trim_tetrimonos(char **tetri)
 	return (tetri);
 }
 
+#include <stdio.h>
+
 int		main(void)
 {
 	char	**tetrimonos;
@@ -76,10 +77,10 @@ int		main(void)
 		tetrimonos[i] = malloc(50);
 		i++;
 	}
-	tetrimonos[0] = strdup(".##.\n");
-	tetrimonos[1] = strdup(".#..\n");
-	tetrimonos[2] = strdup(".#..\n");
-	tetrimonos[3] = strdup("....\n");
+	tetrimonos[0] = strdup("....\n");
+	tetrimonos[1] = strdup("....\n");
+	tetrimonos[2] = strdup("###.\n");
+	tetrimonos[3] = strdup(".#..\n");
 	tetrimonos = trim_tetrimonos(tetrimonos);
 	printf("%s", tetrimonos[0]);
 	printf("%s", tetrimonos[1]);
