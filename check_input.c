@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 09:36:47 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/10 13:46:34 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int		chars_check(char str)
 **  Returns 0 if the file is correct, 1 otherwise.
 */
 
+#include <stdio.h>
+
 int		check_format(char *str, int height, int line, int dash)
 {
 	while (*str)
 	{
 		if (chars_check(*str))
 			return (1);
-		if (*str == '#')
-			dash++;
 		if (*str == '\n')
 		{
 			if (line != 4)
@@ -47,10 +47,13 @@ int		check_format(char *str, int height, int line, int dash)
 			line = -1;
 			height++;
 		}
-		if (*str == '\n' && *(str + 1) == '\n')
+		if (*str == '#')
+			dash++;
+		if (*str == '\n' && ((*(str + 1) == '\n') || (*(str + 1) == '\0')))
 		{
-			if (height % 4 != 0 || dash % 4 != 0 || *(str + 2) == '\0')
+			if (height % 4 != 0 || dash != 4) //|| *(str + 2) == '\0')
 				return (1);
+			dash = 0;
 			str++;
 		}
 		line++;
