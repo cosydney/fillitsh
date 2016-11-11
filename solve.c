@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 15:26:37 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 16:10:51 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
   int		y;
   }				t_coord;*/
 
-
-// NE FONCTIONNE PAS SI JAMAIS LA PIECE EST 4# VERTICALES
 int        is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
 {
 	int        i;
