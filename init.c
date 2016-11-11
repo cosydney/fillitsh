@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 17:45:00 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 10:26:41 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 10:28:01 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int		launch_fillit(char **av)
 	table_tetri = check_tetriminos(str_data);
 	if (compare_tetris(table_tetri))
 		return (1);
+	list_tetri = list_tetriminos(table_tetri);
 	return (0);
 }
