@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 16:41:20 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 19:40:48 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*check_input(char *str_data)
 {
 	if (check_format(str_data, 0, 0, 0))
 		return (NULL);
-	if (check_linked(str_data))
-		return (NULL);
+//	if (check_linked(str_data))
+//		return (NULL);
 	return (str_data);
 }

@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 15:26:37 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 20:15:37 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@
   int		x;
   int		y;
   }				t_coord;*/
-
-
 // NE FONCTIONNE PAS SI JAMAIS LA PIECE EST 4# VERTICALES
-int        is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
+
+int		is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
 {
-	int        i;
-	int        j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (tetri[i])
@@ -44,6 +43,7 @@ int        is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
 	}
 	return (1);
 }
+
 char	**create_table(int size)
 {
 	char	**to_fill;
@@ -61,7 +61,7 @@ char	**create_table(int size)
 	return (to_fill);
 }
 
-void	delete_trace_tetri(char	**to_fill, int i_tetri)
+void	delete_trace_tetri(char **to_fill, int i_tetri)
 {
 	int		i;
 	int		j;
@@ -118,7 +118,7 @@ char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 	return (NULL);
 }
 
-int		solve(char	***list_tetri)
+int		solve(char ***list_tetri)
 {
 	int		i;
 	char	**filled;
