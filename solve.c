@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 13:06:26 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 14:55:12 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int        is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
 		j = 0;
 		while (tetri[i][j])
 		{
+			if (!to_fill[y + i])
+				return (0);
 			if (to_fill[y + i][x + j] != '.' && tetri[i][j] == '#')
 				return (0);
 			else if (tetri[i][j] == '#')
@@ -100,8 +102,6 @@ char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 		x = 0;
 		while (to_fill[y][x])
 		{
-			display_table(to_fill);
-			ft_putchar('\n');
 			if (is_fit(tetri_table[i_tetri], to_fill, i_tetri, x, y))
 			{
 				if (tetri_table[i_tetri + 1] == NULL)
@@ -127,7 +127,9 @@ int		solve(char	***list_tetri)
 	while (ft_iterative_power(i, 2) < (list_len(list_tetri) * 4))
 		i++;
 	filled = create_table(i);
-	try_table(filled, list_tetri, 0);
-	display_table(filled);
+	filled = try_table(filled, list_tetri, 0);
+	if (!filled)
+	filled = try_table(create_table(i+2), list_tetri, 0);
+		display_table(filled);
 	return (0);
 }
