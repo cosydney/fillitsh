@@ -6,7 +6,7 @@
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:07:18 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/08 08:41:20 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 11:08:54 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ void			ft_lstaddback(t_list **alst, t_list *new);
 size_t			ft_lstsize(t_list *lst);
 char			*ft_strndup(const char *s1, size_t n);
 size_t			ft_strlenc(char *str, char c);
+int				ft_iterative_power(int nb, int power);
 
 #endif

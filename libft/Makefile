@@ -71,7 +71,8 @@ SRCS = ft_memset.c \
 	   ft_lstaddback.c \
 	   ft_lstsize.c \
 	   ft_strndup.c \
-	   ft_strlenc.c
+	   ft_strlenc.c \
+	   ft_iterative_power.c
 
 OBJS = $(SRCS:.c=.o)
 

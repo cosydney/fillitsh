@@ -6,35 +6,42 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 17:31:15 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 11:47:28 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-typedef	struct	s_coord
+/*typedef	struct	s_coord
 {
 	int		x;
 	int		y;
-}				t_coord;
+}				t_coord;*/
 
-int		is_fit(char **tetri, char **to_fill, int i_tetri, t_coord xy)
+int		is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
 {
 	int		i;
 	int		j;
+	int		count;
 
 	i = 0;
-	while (to_fill[xy.y + i])
+	count = 0;
+	while (tetri[i])
 	{
 		j = 0;
-		while (to_fill[xy.y + i][xy.x + j])
+		while (tetri[i][j])
 		{
-			//GERER TOUS LES CAS D'ERREURS TYPE: # et #, DEPASSEMENT TABLEAU.
-			//IL FAUT RETURN 1 UNIQUEMENT SI 4 # ONT ETE PLACES, SINON 0.
-			if (to_fill[xy.y + i][xy.x + j] != '#' && tetri[i][j] == '#')
-			   	to_fill[xy.y + i][xy.x + j] = 'A' + k;
+			if (to_fill[y + i][x + j] == '.' && tetri[i][j] == '#')
+			{
+			   	to_fill[y + i][x + j] = 'A' + i_tetri;
+				count++;
+			}
+			j++;
 		}
+		i++;
+	}
+	return (1);
 }
 
 char	**create_table(int size)
@@ -48,13 +55,13 @@ char	**create_table(int size)
 	while (i < size)
 	{
 		to_fill[i] = ft_strnew(size + 1);
-		ft_memset(to_fill[i++], '.', size + 1);
+		ft_memset(to_fill[i++], '.', size);
 	}
-	to_fill[i] = '\0';
+	to_fill[i] = NULL;
 	return (to_fill);
 }
 
-char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
+/*char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 {
 	int		x;
 	int		y;
@@ -75,21 +82,34 @@ char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 		y++;
 	}
 	return (NULL);
+}*/
+
+int		list_len(char ***list_tetri)
+{
+	int i;
+	
+	i = 0;
+	while (list_tetri[i])
+		i++;
+	return (i);
 }
 
-int		solve(char	***tetri_table)
+int		solve(char	***list_tetri)
 {
 	int		i;
 	char	**filled;
 
 	i = 2;
 	filled = NULL;
-	while (ft_iterative_power(i) < (table_len * 4))
+	while (ft_iterative_power(i, 2) < (list_len(list_tetri) * 4))
 		i++;
-	while (filled = try_table(create_table(i), tetri_table, 0))
+	/*while (!(filled = try_table(create_table(i), list_tetri, 0)))
 	{ 
 		free(to_fill);
 		i++;
-	}
-	display(filled);
+	}*/
+	filled = create_table(i);
+	is_fit(list_tetri[1], filled, 1, 0, 0);
+	display_table(filled);
+	return (0);
 }
