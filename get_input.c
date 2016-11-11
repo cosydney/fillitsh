@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:04:26 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 10:26:55 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 08:12:05 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,17 @@ char	*file_to_str(int fd)
 	while ((bytes_read = read(fd, buffer, BUF_SIZE)))
 	{
 		file_size += bytes_read;
+		if (file_size > 550)
+		{
+			free(buffer);
+			return (NULL);
+		}
 		buffer[bytes_read] = '\0';
 		ft_lstaddback(&lst, ft_lstnew(buffer, BUF_SIZE + 1));
 	}
 	free(buffer);
+	if (file_size < 20)
+		return (NULL);
 	return (lst_to_str(lst, file_size));
 }
 
