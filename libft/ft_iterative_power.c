@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:24:48 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 10:48:24 by hdelaby          ###   ########.fr       */
+/*   Created: 2016/07/08 15:07:40 by hdelaby           #+#    #+#             */
+/*   Updated: 2016/07/09 12:53:13 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+int		ft_iterative_power(int nb, int power)
+{
+	int original;
 
-int		launch_fillit(char **av);
-
-char	*open_close_file(char *path);
-
-char	*check_input(char *str_data);
-
-char	**check_tetriminos(char *str_data);
-
-char	*remove_edges(char **indiv_tetri);
-
-int		compare_tetris(char **tetris);
-
-char	***list_tetriminos(char	**table_tetri);
-void	display_table(char **table);
-
-int		solve(char ***list_tetri);
-#endif
+	if ((nb == 0 && power == 0) || power == 0)
+		return (1);
+	if (power <= 0)
+		return (0);
+	original = nb;
+	while (power != 1)
+	{
+		nb *= original;
+		power--;
+	}
+	return (nb);
+}
