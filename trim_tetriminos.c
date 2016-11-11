@@ -6,14 +6,14 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:20:39 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 16:13:47 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 17:10:00 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-char    *copy_trim(char **indiv_tetri)
+char	*copy_trim(char **indiv_tetri)
 {
 	char	*trim_cpy;
 	int		i;
@@ -39,7 +39,7 @@ char    *copy_trim(char **indiv_tetri)
 	return (trim_cpy);
 }
 
-void    trim_col(char **indiv_tetri, int col)
+void	trim_col(char **indiv_tetri, int col)
 {
 	int		i;
 
@@ -51,7 +51,7 @@ void    trim_col(char **indiv_tetri, int col)
 		indiv_tetri[i++ % 4][col] = '-';
 }
 
-void    trim_row(char *tetri_row)
+void	trim_row(char *tetri_row)
 {
 	int		i;
 
@@ -63,7 +63,7 @@ void    trim_row(char *tetri_row)
 		tetri_row[i++ % 5] = '-';
 }
 
-char    *remove_edges(char **indiv_tetri)
+char	*remove_edges(char **indiv_tetri)
 {
 	int		i;
 	char	*trim_cpy;

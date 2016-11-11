@@ -6,23 +6,17 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 16:10:51 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 16:47:38 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-/*typedef	struct	s_coord
-  {
-  int		x;
-  int		y;
-  }				t_coord;*/
-
-int        is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
+int		is_fit(char **tetri, char **to_fill, int i_tetri, t_coord xy)
 {
-	int        i;
-	int        j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (tetri[i])
@@ -30,18 +24,19 @@ int        is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
 		j = 0;
 		while (tetri[i][j])
 		{
-			if (!to_fill[y + i])
+			if (!to_fill[xy.y + i])
 				return (0);
-			if (to_fill[y + i][x + j] != '.' && tetri[i][j] == '#')
+			if (to_fill[xy.y + i][xy.x + j] != '.' && tetri[i][j] == '#')
 				return (0);
 			else if (tetri[i][j] == '#')
-				to_fill[y + i][x + j] = 'A' + i_tetri;
+				to_fill[xy.y + i][xy.x + j] = 'A' + i_tetri;
 			j++;
 		}
 		i++;
 	}
 	return (1);
 }
+
 char	**create_table(int size)
 {
 	char	**to_fill;
@@ -59,7 +54,7 @@ char	**create_table(int size)
 	return (to_fill);
 }
 
-void	delete_trace_tetri(char	**to_fill, int i_tetri)
+void	delete_trace_tetri(char **to_fill, int i_tetri)
 {
 	int		i;
 	int		j;
@@ -78,30 +73,18 @@ void	delete_trace_tetri(char	**to_fill, int i_tetri)
 	}
 }
 
-int		list_len(char ***list_tetri)
-{
-	int i;
-
-	i = 0;
-	while (list_tetri[i])
-		i++;
-	return (i);
-}
-
 char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 {
-	int		x;
-	int		y;
 	char	**test;
+	t_coord	xy;
 
-	x = 0;
-	y = 0;
-	while (to_fill[y])
+	xy.y = 0;
+	while (to_fill[xy.y])
 	{
-		x = 0;
-		while (to_fill[y][x])
+		xy.x = 0;
+		while (to_fill[xy.y][xy.x])
 		{
-			if (is_fit(tetri_table[i_tetri], to_fill, i_tetri, x, y))
+			if (is_fit(tetri_table[i_tetri], to_fill, i_tetri, xy))
 			{
 				if (tetri_table[i_tetri + 1] == NULL)
 					return (to_fill);
@@ -109,14 +92,14 @@ char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 					return (test);
 			}
 			delete_trace_tetri(to_fill, i_tetri);
-			x++;
+			xy.x++;
 		}
-		y++;
+		xy.y++;
 	}
 	return (NULL);
 }
 
-int		solve(char	***list_tetri)
+int		solve(char ***list_tetri)
 {
 	int		i;
 	char	**filled;

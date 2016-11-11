@@ -6,27 +6,35 @@
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 12:24:48 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 10:48:24 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 16:38:40 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-int		launch_fillit(char **av);
+typedef struct	s_coord
+{
+	int		x;
+	int		y;
+}				t_coord;
 
-char	*open_close_file(char *path);
+int				launch_fillit(char **av);
 
-char	*check_input(char *str_data);
+char			*open_close_file(char *path);
 
-char	**check_tetriminos(char *str_data);
+char			*check_input(char *str_data);
 
-char	*remove_edges(char **indiv_tetri);
+char			**check_tetriminos(char *str_data);
 
-int		compare_tetris(char **tetris);
+char			*remove_edges(char **indiv_tetri);
 
-char	***list_tetriminos(char	**table_tetri);
-void	display_table(char **table);
+int				compare_tetris(char **tetris);
 
-int		solve(char ***list_tetri);
+char			***list_tetriminos(char	**table_tetri);
+void			display_table(char **table);
+int				list_len(char ***list_tetri);
+
+int				solve(char ***list_tetri);
+
 #endif
