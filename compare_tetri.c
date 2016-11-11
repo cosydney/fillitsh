@@ -6,12 +6,13 @@
 /*   By: sycohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 16:49:25 by sycohen           #+#    #+#             */
-/*   Updated: 2016/11/10 19:10:37 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 08:47:28 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
+#include <stdio.h>
 
 int		compare_tetris(char **tetris)
 {
@@ -22,7 +23,7 @@ int		compare_tetris(char **tetris)
 
 	i = 0;
 	count = 0;
-	if (!(t = ft_memalloc(sizeof(char*) * 5)))
+	if (!(t = ft_memalloc(sizeof(char*) * 6)))
 		return (1);
 	t[0] = strdup("1#\n#\n#\n#\n1####\n");
 	t[1] = strdup("2#.\n#.\n##\n2..#\n###\n2##\n.#\n.#\n2###\n#..\n");
@@ -31,6 +32,8 @@ int		compare_tetris(char **tetris)
 	t[4] = strdup("5##\n##\n6##.\n.##\n6.#\n##\n#.\n7.##\n##.\n7#.\n##\n.#\n");
 	while (tetris[i])
 	{
+		ft_putstr("coucou");
+		ft_putnbr(i);
 		j = 0;
 		while (j < 5)
 			if (ft_strstr(t[j++], tetris[i]))
