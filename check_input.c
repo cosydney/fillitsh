@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 14:08:44 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 15:48:49 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		check_format(char *str, int height, int line, int dash)
 		line++;
 		str++;
 	}
-	return ((height % 4 == 0) ? 0 : 1);
+	return ((*(str - 1) != '\n') && (height % 4 == 0) ? 0 : 1);
 }
 
 char	*check_input(char *str_data)
