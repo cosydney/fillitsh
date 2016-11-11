@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 17:45:00 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 09:22:47 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 10:20:15 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		launch_fillit(char **av)
 {
 	char	*str_data;
 	char	**table_tetri;
+	char	***list_tetri;
 
 	str_data = NULL;
 	table_tetri = NULL;

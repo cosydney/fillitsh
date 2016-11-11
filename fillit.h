@@ -6,7 +6,7 @@
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 12:24:48 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 16:56:23 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 09:09:43 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ char	**check_tetriminos(char *str_data);
 char	*remove_edges(char **indiv_tetri);
 
 int		compare_tetris(char **tetris);
+
+char	***list_tetriminos(char	**table_tetri);
 
 #endif

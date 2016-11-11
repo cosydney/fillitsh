@@ -6,7 +6,7 @@
 #    By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 12:30:05 by hdelaby           #+#    #+#              #
-#    Updated: 2016/11/10 16:57:09 by sycohen          ###   ########.fr        #
+#    Updated: 2016/11/11 09:09:15 by hdelaby          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBNAME = lib;
 LIBPATH = -C ./libft/
 
 SRCS = main.c init.c get_input.c check_input.c check_tetriminos.c \
-	   trim_tetriminos.c compare_tetri.c \
+	   trim_tetriminos.c compare_tetri.c list_tetriminos.c
 
 OBJS = $(SRCS:.c=.o)
 
