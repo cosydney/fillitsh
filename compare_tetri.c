@@ -6,7 +6,7 @@
 /*   By: sycohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 16:49:25 by sycohen           #+#    #+#             */
-/*   Updated: 2016/11/11 08:47:28 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 08:50:43 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int		compare_tetris(char **tetris)
 	t[4] = strdup("5##\n##\n6##.\n.##\n6.#\n##\n#.\n7.##\n##.\n7#.\n##\n.#\n");
 	while (tetris[i])
 	{
-		ft_putstr("coucou");
-		ft_putnbr(i);
 		j = 0;
 		while (j < 5)
 			if (ft_strstr(t[j++], tetris[i]))
