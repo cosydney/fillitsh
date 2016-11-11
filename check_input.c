@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:57:35 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 15:48:49 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 16:41:20 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,36 @@ int		check_format(char *str, int height, int line, int dash)
 	return ((*(str - 1) != '\n') && (height % 4 == 0) ? 0 : 1);
 }
 
+int		check_linked(char *str)
+{
+	int i;
+	int count;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '#' && str[i + 1] == '#')
+			count++;
+		if (str[i] == '#' && str[i + 5] == '#')
+			count++;
+		if (str[i] == '\n' && ((str[i + 1] == '\n') || (str[i + 1] == '\0')))
+		{
+			if (count != 3 && count != 4)
+				return (1);
+			else
+				count = 0;
+		}
+		i++;
+	}
+	return (0);
+}
+
 char	*check_input(char *str_data)
 {
 	if (check_format(str_data, 0, 0, 0))
+		return (NULL);
+	if (check_linked(str_data))
 		return (NULL);
 	return (str_data);
 }
