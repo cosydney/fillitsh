@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:04:26 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 14:20:13 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/10 19:11:43 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /*
 ** Add verification if there is less than 24 characters
-** 
+** And may be if there is more than 26 tetrimonos
 */
 
 char	*lst_to_str(t_list *lst, size_t file_size)
