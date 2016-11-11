@@ -6,7 +6,7 @@
 /*   By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 13:49:00 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 10:22:16 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 15:32:37 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int ac, char **av)
 	}
 	if (launch_fillit(av))
 	{
-		ft_putendl("Error.");
+		ft_putendl("error");
 		return (2);
 	}
 	return (0);
