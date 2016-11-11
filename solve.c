@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 15:06:14 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/11 15:26:37 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 {
 	int		x;
 	int		y;
+	char	**test;
 
 	x = 0;
 	y = 0;
@@ -106,10 +107,10 @@ char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 			{
 				if (tetri_table[i_tetri + 1] == NULL)
 					return (to_fill);
-				return (try_table(to_fill, tetri_table, i_tetri + 1));
+				if ((test = try_table(to_fill, tetri_table, i_tetri + 1)))
+					return (test);
 			}
-			else
-				delete_trace_tetri(to_fill, i_tetri);
+			delete_trace_tetri(to_fill, i_tetri);
 			x++;
 		}
 		y++;
