@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:13:42 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 08:51:59 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 09:21:46 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**split_tetri(char *str_data)
 	int		j;
 
 	j = 0;
-	table_tetri = (char **)malloc(sizeof(char *) * (ft_strlen(str_data) % 20 + 2));
+	table_tetri = (char **)malloc(sizeof(char *) * (ft_strlen(str_data) / 20 + 2));
 	if (!table_tetri)
 		return (NULL);
 	while (*str_data)
