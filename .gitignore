@@ -1,3 +1,6 @@
 *.o
 *.a
 fillit
+./Tetrimonos-generator
+./correct_files
+./tricky_files

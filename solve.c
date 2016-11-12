@@ -6,21 +6,14 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/12 09:37:25 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/12 14:39:21 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-/*typedef	struct	s_coord
-  {
-  int		x;
-  int		y;
-  }				t_coord;*/
-// NE FONCTIONNE PAS SI JAMAIS LA PIECE EST 4# VERTICALES
-
-int		is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
+int		is_fit(char **tetri, char **to_fill, int i_tetri, t_coord axis)
 {
 	int	i;
 	int	j;
@@ -31,12 +24,12 @@ int		is_fit(char **tetri, char **to_fill, int i_tetri, int x, int y)
 		j = 0;
 		while (tetri[i][j])
 		{
-			if (!to_fill[y + i])
+			if (!to_fill[axis.y + i])
 				return (0);
-			if (to_fill[y + i][x + j] != '.' && tetri[i][j] == '#')
+			if (to_fill[axis.y + i][axis.x + j] != '.' && tetri[i][j] == '#')
 				return (0);
 			else if (tetri[i][j] == '#')
-				to_fill[y + i][x + j] = 'A' + i_tetri;
+				to_fill[axis.y + i][axis.x + j] = 'A' + i_tetri;
 			j++;
 		}
 		i++;
@@ -80,30 +73,19 @@ void	delete_trace_tetri(char **to_fill, int i_tetri)
 	}
 }
 
-int		list_len(char ***list_tetri)
-{
-	int i;
-
-	i = 0;
-	while (list_tetri[i])
-		i++;
-	return (i);
-}
-
 char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 {
-	int		x;
-	int		y;
+	t_coord axis;
 	char	**test;
 
-	x = 0;
-	y = 0;
-	while (to_fill[y])
+	axis.x = 0;
+	axis.y = 0;
+	while (to_fill[axis.y])
 	{
-		x = 0;
-		while (to_fill[y][x])
+		axis.x = 0;
+		while (to_fill[axis.y][axis.x])
 		{
-			if (is_fit(tetri_table[i_tetri], to_fill, i_tetri, x, y))
+			if (is_fit(tetri_table[i_tetri], to_fill, i_tetri, axis))
 			{
 				if (tetri_table[i_tetri + 1] == NULL)
 					return (to_fill);
@@ -111,9 +93,9 @@ char	**try_table(char **to_fill, char ***tetri_table, int i_tetri)
 					return (test);
 			}
 			delete_trace_tetri(to_fill, i_tetri);
-			x++;
+			axis.x++;
 		}
-		y++;
+		axis.y++;
 	}
 	return (NULL);
 }

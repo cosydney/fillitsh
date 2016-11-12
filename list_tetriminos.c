@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 08:55:30 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/11 20:13:12 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/12 14:39:07 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ char	***list_tetriminos(char **table_tetri)
 	free(table_tetri);
 	list_tetri[i] = NULL;
 	return (list_tetri);
+}
+
+int		list_len(char ***list_tetri)
+{
+	int i;
+
+	i = 0;
+	while (list_tetri[i])
+		i++;
+	return (i);
 }
