@@ -6,14 +6,14 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:20:39 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/10 16:13:47 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/11 20:10:39 by sycohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-char    *copy_trim(char **indiv_tetri)
+char	*copy_trim(char **indiv_tetri)
 {
 	char	*trim_cpy;
 	int		i;
@@ -39,7 +39,7 @@ char    *copy_trim(char **indiv_tetri)
 	return (trim_cpy);
 }
 
-void    trim_col(char **indiv_tetri, int col)
+void	trim_col(char **indiv_tetri, int col)
 {
 	int		i;
 
@@ -51,7 +51,7 @@ void    trim_col(char **indiv_tetri, int col)
 		indiv_tetri[i++ % 4][col] = '-';
 }
 
-void    trim_row(char *tetri_row)
+void	trim_row(char *tetri_row)
 {
 	int		i;
 
@@ -63,13 +63,41 @@ void    trim_row(char *tetri_row)
 		tetri_row[i++ % 5] = '-';
 }
 
-char    *remove_edges(char **indiv_tetri)
+int		check_proximity(char **tetri, int i, int j, int count)
+{
+	while (tetri[i])
+	{
+		j = 0;
+		while (tetri[i][j])
+		{
+			if (i < 3)
+				if (tetri[i][j] == '#' && tetri[i + 1][j] == '#')
+					count++;
+			if (i <= 3)
+				if (tetri[i][j] == '#' && tetri[i][j + 1] == '#')
+					count++;
+			j++;
+		}
+		if (i == 3)
+		{
+			if (count != 3 && count != 4)
+				return (1);
+			count = 0;
+		}
+		i++;
+	}
+	return (0);
+}
+
+char	*remove_edges(char **indiv_tetri)
 {
 	int		i;
 	char	*trim_cpy;
 
 	i = 0;
 	trim_cpy = NULL;
+	if (check_proximity(indiv_tetri, 0, 0, 0))
+		return (NULL);
 	while (i < 4)
 		trim_row(indiv_tetri[i++]);
 	while (i < 8)
