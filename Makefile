@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdelaby <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/11/08 12:30:05 by hdelaby           #+#    #+#              #
-#    Updated: 2016/11/11 10:53:01 by hdelaby          ###   ########.fr        #
+#    Created: 2016/11/14 10:05:07 by hdelaby           #+#    #+#              #
+#    Updated: 2016/11/14 10:40:02 by hdelaby          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,27 +16,24 @@ CFLAGS = -Wall -Wextra -Werror
 LIBNAME = lib;
 LIBPATH = -C ./libft/
 
-SRCS = main.c init.c get_input.c check_input.c check_tetriminos.c \
-	   trim_tetriminos.c compare_tetri.c list_tetriminos.c solve.c
-
-OBJS = $(SRCS:.c=.o)
+OBJS = main.o init.o get_input.o check_input.o check_tetriminos.o \
+	   trim_tetriminos.o compare_tetri.o list_tetriminos.o solve.o
 
 all: $(NAME)
 
-$(NAME): lib $(OBJS)
-	$(CC) $(CFLAGS) -L./libft -lft -o $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	make $(LIBPATH)
+	$(CC) $(CFLAGS) -L./libft -lft -o $@ $^
 
-$(OBJS):
-	$(CC) $(CFLAGS) -I./libft -c $(SRCS)
+%.o: %.c
+	$(CC) -c -o  $@ $< -I./libft $(CFLAGS)
 
 clean:
 	rm -f $(OBJS)
+	make clean $(LIBPATH)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f libft/libft.a
 
 re: fclean all
-
-lib:
-	make $(LIBPATH)
-

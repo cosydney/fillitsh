@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 17:45:00 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/14 09:43:14 by hdelaby          ###   ########.fr       */
+/*   Updated: 2016/11/14 10:23:43 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 ** Receives the path from main and initialises the program
 ** Returns 1 on failure and 0 on success
 */
-#include <stdio.h>
 
 int		launch_fillit(char **av)
 {
