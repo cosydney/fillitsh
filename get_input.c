@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:04:26 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/12 14:39:45 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/14 09:47:36 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,32 @@
 
 #define BUF_SIZE 1024
 
+void	ft_lstdelcontent(void *content, size_t content_size)
+{
+	free(content);
+	content = NULL;
+	content_size = 0;
+}
+
 /*
 ** Takes data input from a lista and converts it to a string
 ** Returns the new str or NULL on failure
 */
 
-/*
-** Add verification if there is less than 24 characters
-** And may be if there is more than 26 tetrimonos
-*/
-
 char	*lst_to_str(t_list *lst, size_t file_size)
 {
 	char	*str_data;
-	t_list	*lst_ptr;
 
 	if ((str_data = (char *)malloc(sizeof(char) * file_size + 1)) == NULL)
 		return (NULL);
 	str_data[file_size] = '\0';
-	lst_ptr = &(*lst);
 	while (lst)
 	{
 		ft_strncat(str_data, lst->content, lst->content_size);
 		lst = lst->next;
 	}
-	// FREE LA LISTE !!
+	ft_lstdel(&lst, &ft_lstdelcontent);
+	free(lst);
 	return (str_data);
 }
 
@@ -74,6 +75,7 @@ char	*file_to_str(int fd)
 		ft_lstaddback(&lst, ft_lstnew(buffer, BUF_SIZE + 1));
 	}
 	free(buffer);
+	buffer = NULL;
 	if (file_size < 20)
 		return (NULL);
 	return (lst_to_str(lst, file_size));

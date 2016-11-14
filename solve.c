@@ -6,7 +6,7 @@
 /*   By: hdelaby <hdelaby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:15:08 by hdelaby           #+#    #+#             */
-/*   Updated: 2016/11/12 14:39:21 by sycohen          ###   ########.fr       */
+/*   Updated: 2016/11/14 09:24:49 by hdelaby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,14 @@ int		solve(char ***list_tetri)
 	filled = NULL;
 	while (ft_iterative_power(i, 2) < (list_len(list_tetri) * 4))
 		i++;
-	filled = create_table(i);
+	if ((filled = create_table(i)) == NULL)
+		return (1);
 	while (!(filled = try_table(filled, list_tetri, 0)))
 	{
 		free(filled);
 		i++;
-		filled = create_table(i);
+		if ((filled = create_table(i)) == NULL)
+			return (1);
 	}
 	display_table(filled);
 	free(filled);
